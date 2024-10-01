@@ -1,4 +1,4 @@
-# Neovim Configuration README
+# Neovim Configs
 
 ## Table of Contents
 1. [Introduction](#introduction)
