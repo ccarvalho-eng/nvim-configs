@@ -28,6 +28,10 @@ set nowritebackup
 let mapleader = "\<Space>"    " Set leader key to space
 nnoremap <leader>w :w<CR>     " Quick save
 nnoremap <leader>q :q<CR>     " Quick quit
+
+" Clear search highlight with Escape key
+nnoremap <silent> <Esc> :noh<CR><Esc>
+
 " Window navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
