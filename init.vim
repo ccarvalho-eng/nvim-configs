@@ -46,6 +46,9 @@ call plug#begin('~/.vim/plugged')
   " Provides a start screen with recent files, bookmarks, etc.
   Plug 'mhinz/vim-startify'
 
+  " AI assistance
+  Plug 'github/copilot.vim'
+
   " Elixir support
   " Usage: Provides syntax highlighting and indentation for Elixir files
   " Commands: None (works automatically)
@@ -279,6 +282,9 @@ let g:startify_custom_header_quotes = [
 " Limit the number of files shown in each list
 let g:startify_files_number = 5
 let g:startify_session_number = 5
+
+" GitHub Copilot settings
+let g:copilot_enabled = 1
 
 " rhubarb
 nnoremap <leader>gh :.GBrowse<CR>
