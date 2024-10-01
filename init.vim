@@ -359,7 +359,7 @@ autocmd FileType elixir setlocal shiftwidth=2 tabstop=2 softtabstop=2
 let g:mix_format_on_save = 1
 
 " Append a debug function to the end of a line
-nnoremap <leader>d A |> dbg()<Esc>
+nnoremap <leader>d A \|> dbg()<Esc>
 
 " Erlang
 autocmd BufRead,BufNewFile *.erl,*.hrl setfiletype erlang
