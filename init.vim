@@ -1,30 +1,113 @@
 " -- General Settings --
-filetype plugin indent on     " Enable file type detection and do language-dependent indenting
-syntax enable                 " Enable syntax highlighting
+set nocompatible              " Be iMproved, required
+filetype off                  " required for Vundle
+set encoding=utf-8            " Set default encoding to UTF-8
 set number                    " Show line numbers
 set relativenumber            " Show relative line numbers
-set expandtab                 " Use spaces instead of tabs
+set hidden                    " Allow buffer switching without saving
+set clipboard=unnamed         " Use system clipboard
+set backspace=indent,eol,start " Make backspace work as you would expect
+set noswapfile                " Disable swap files
+set nobackup                  " Disable backups
+set nowritebackup             " Disable write backups
+
+" -- Performance Optimizations --
+set lazyredraw                " Don't redraw while executing macros
+set ttyfast                   " Faster redrawing
+set updatetime=300            " Faster completion
+set timeoutlen=500            " By default timeoutlen is 1000 ms
+
+" -- UI Config --
+set termguicolors             " Enable true colors support
+syntax enable                 " Enable syntax highlighting
+set cursorline                " Highlight current line
+set wildmenu                  " Visual autocomplete for command menu
+set wildmode=list:longest,full " Complete files like a shell
+set showmatch                 " Highlight matching [{()}]
+set colorcolumn=80            " Show vertical line at column 80
+
+" -- Spaces & Tabs --
+set expandtab                 " Tabs are spaces, not tabs
 set tabstop=2                 " Number of spaces that a <Tab> counts for
 set shiftwidth=2              " Number of spaces to use for each step of (auto)indent
 set softtabstop=2             " Number of spaces that a <Tab> counts for while performing editing operations
 set autoindent                " Copy indent from current line when starting a new line
 set smartindent               " Do smart autoindenting when starting a new line
-set hidden                    " Allow buffer switching without saving
+
+" -- Searching --
 set incsearch                 " Show search matches as you type
+set hlsearch                  " Highlight all matches
 set ignorecase                " Ignore case when searching
-set smartcase                 " Override ignorecase if search pattern contains upper case letters
-set clipboard=unnamed         " Use system clipboard
-set backspace=indent,eol,start " Make backspace work as you would expect
-set cursorline                " Highlight current line
-set wildmenu                  " Enhanced command line completion
-set wildmode=list:longest,full " Complete files like a shell
+set smartcase                 " When searching try to be smart about cases
 
-" Disable swap files and backups
-set noswapfile
-set nobackup
-set nowritebackup
+" -- Folding --
+set foldenable                " Enable folding
+set foldlevelstart=10         " Open most folds by default
+set foldnestmax=10            " 10 nested fold max
+set foldmethod=indent         " Fold based on indent level
 
-" -- Key Mappings --
+" -- Movement --
+" Move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+
+" -- Plugin Management --
+" Auto-install vim-plug if not present
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+  " Existing plugins
+  Plug 'mhinz/vim-startify'
+  Plug 'github/copilot.vim'
+  Plug 'elixir-editors/vim-elixir'
+  Plug 'mhinz/vim-mix-format'
+  Plug 'dense-analysis/ale'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'amiralies/coc-elixir', {'do': 'yarn install && yarn prepack'}
+  Plug 'vim-test/vim-test'
+  Plug 'kassio/neoterm'
+  Plug 'preservim/nerdtree'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+  Plug 'kdheepak/lazygit.nvim'
+  Plug 'junegunn/gv.vim'
+  Plug 'tpope/vim-rhubarb'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'tpope/vim-commentary'
+  Plug 'vim-erlang/vim-erlang-runtime'
+  Plug 'vim-erlang/vim-erlang-compiler'
+  Plug 'vim-erlang/vim-erlang-omnicomplete'
+  Plug 'rust-lang/rust.vim'
+  Plug 'gleam-lang/gleam.vim'
+  Plug 'vim-python/python-syntax'
+  Plug 'Vimjas/vim-python-pep8-indent'
+  Plug 'kovisoft/slimv'
+  Plug 'prabirshrestha/vim-lsp'
+  Plug 'mattn/vim-lsp-settings'
+  Plug 'joshdick/onedark.vim'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'ryanoasis/vim-devicons'
+  
+  " Additional useful plugins
+  Plug 'tpope/vim-surround'               " Easily delete, change and add surroundings in pairs
+  Plug 'tpope/vim-repeat'                 " Enable repeating supported plugin maps with '.'
+  Plug 'jiangmiao/auto-pairs'             " Insert or delete brackets, parens, quotes in pair
+  Plug 'alvan/vim-closetag'               " Auto close HTML tags
+  Plug 'easymotion/vim-easymotion'        " Vim motions on speed
+  Plug 'terryma/vim-multiple-cursors'     " Multiple selections for Vim
+  Plug 'mbbill/undotree'                  " Visualize undo history
+  Plug 'vimwiki/vimwiki'                  " Personal Wiki for Vim
+  Plug 'junegunn/goyo.vim'                " Distraction-free writing in Vim
+  Plug 'junegunn/limelight.vim'           " Hyperfocus-writing in Vim
+call plug#end()
+
+" -- Leader Shortcuts --
 let mapleader = "\<Space>"    " Set leader key to space
 nnoremap <leader>w :w<CR>     " Quick save
 nnoremap <leader>q :q<CR>     " Quick quit
@@ -38,162 +121,21 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" -- Plugins --
-" Load vim-plug
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-call plug#begin('~/.vim/plugged')
-  " Provides a start screen with recent files, bookmarks, etc.
-  Plug 'mhinz/vim-startify'
-
-  " AI assistance
-  Plug 'github/copilot.vim'
-
-  " Elixir support
-  " Usage: Provides syntax highlighting and indentation for Elixir files
-  " Commands: None (works automatically)
-  Plug 'elixir-editors/vim-elixir'
-
-  " Usage: Automatically formats Elixir code
-  " Commands: :MixFormat to format the current file
-  Plug 'mhinz/vim-mix-format'
-
-  " Linting and formatting
-  " Usage: Provides linting and fixing for various languages
-  " Commands: :ALEFix to fix issues, :ALELint to check for issues
-  Plug 'dense-analysis/ale'
-
-  " Autocomplete and language server
-  " Usage: Provides autocompletion and language server features
-  " Commands: Various, see :help coc-commands
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-  " Usage: Elixir language server for CoC
-  " Commands: None (works with CoC automatically)
-  Plug 'amiralies/coc-elixir', {'do': 'yarn install && yarn prepack'}
-
-  " Testing
-  " Usage: Provides commands to run tests
-  " Commands: :TestNearest, :TestFile, :TestSuite, :TestLast, :TestVisit
-  Plug 'vim-test/vim-test'
-
-  " Usage: Provides a terminal for running tests and commands
-  " Commands: :T {command} to run a command in the terminal
-  Plug 'kassio/neoterm'
-
-  " File explorer
-  " Usage: Provides a file explorer sidebar
-  " Commands: :NERDTreeToggle to open/close, :NERDTreeFind to locate current file
-  Plug 'preservim/nerdtree'
-
-  " Fuzzy finder
-  " Usage: Provides fuzzy finding for files, buffers, etc.
-  " Commands: :Files, :Buffers, :Ag, etc.
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
-
-  " Git UI
-  " Usage: Provides a TUI for Git
-  " Commands: :LazyGit
-  Plug 'kdheepak/lazygit.nvim'
-
-  " A git commit browser
-  " Usage: Provides a Git commit browser
-  " Commands: :GV
-  Plug 'junegunn/gv.vim'
-
-  " GitHub integration
-  " Usage: Provides GitHub integration
-  " Commands: :Gbrowse, :Gbrowse! to open the current file on GitHub
-  Plug 'tpope/vim-rhubarb'
-
-  " Usage: Shows git diff in the sign column
-  " Commands: ]c and [c to navigate changes, <leader>hp to preview
-  Plug 'airblade/vim-gitgutter'
-
-  " Status line
-  " Usage: Enhances the status line with more information
-  " Commands: None (works automatically)
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-
-  " Commenting plugin
-  " Usage: Provides commands to comment/uncomment code
-  " Commands: gcc to toggle comment for a line, gc for visual selection
-  Plug 'tpope/vim-commentary'
-
-  " Erlang support
-  " Usage: Provides syntax highlighting and indentation for Erlang
-  " Commands: None (works automatically)
-  Plug 'vim-erlang/vim-erlang-runtime'
-  Plug 'vim-erlang/vim-erlang-compiler'
-  Plug 'vim-erlang/vim-erlang-omnicomplete'
-
-  " Rust support
-  " Usage: Provides Rust file detection, syntax highlighting, formatting, etc.
-  " Commands: :RustFmt to format, :RustRun to run, :RustTest to test
-  Plug 'rust-lang/rust.vim'
-
-  " Gleam support
-  " Usage: Provides syntax highlighting for Gleam
-  " Commands: None (works automatically)
-  Plug 'gleam-lang/gleam.vim'
-
-  " Python support
-  " Usage: Provides enhanced Python syntax highlighting
-  " Commands: None (works automatically)
-  Plug 'vim-python/python-syntax'
-
-  " Usage: Provides better Python indentation
-  " Commands: None (works automatically)
-  Plug 'Vimjas/vim-python-pep8-indent'
-
-  " Lisp support
-  " Usage: Provides Lisp editing environment
-  " Commands: ,e to evaluate expression, ,d to evaluate defun, etc.
-  Plug 'kovisoft/slimv'
-
-  " Language Server Protocol (LSP) support
-  " Usage: Provides LSP client support
-  " Commands: :LspStatus, :LspDefinition, :LspReferences, etc.
-  Plug 'prabirshrestha/vim-lsp'
-
-  " Usage: Provides automatic LSP server installation
-  " Commands: :LspInstallServer
-  Plug 'mattn/vim-lsp-settings'
-
-  " One Dark theme
-  Plug 'joshdick/onedark.vim'
-
-  " Installs airline themes
-  Plug 'vim-airline/vim-airline-themes'
-
-  " File icons
-  Plug 'ryanoasis/vim-devicons'
-call plug#end()
+" Toggle NERDTree
+nnoremap <leader>n :NERDTreeToggle<CR>
+" Toggle Undotree
+nnoremap <leader>u :UndotreeToggle<CR>
+" Toggle Goyo
+nnoremap <leader>G :Goyo<CR>
 
 " -- Plugin Configuration --
-" ALE
-let g:ale_fixers = {
-  \ 'elixir': ['mix_format'],
-  \ 'python': ['black']
-  \ }
-let g:ale_fix_on_save = 1
-
-" Startify configuration
-
-" Function to center ASCII art
+" Startify
 function! CenterAsciiArt(lines)
     let longest_line = max(map(copy(a:lines), 'strwidth(v:val)'))
     let centered_lines = map(copy(a:lines), 'repeat(" ", (&columns - strwidth(v:val)) / 2) . v:val')
     return centered_lines
 endfunction
 
-" Startify custom header with centered Assassin's Creed logo ASCII art
 let s:ascii_art = [
       \ '⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀',
       \ '⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀',
@@ -224,12 +166,10 @@ let s:ascii_art = [
 
 let g:startify_custom_header = CenterAsciiArt(s:ascii_art)
 
-" Function to limit list items to 5
 function! LimitedList(type, cmd, header)
     return { 'type': a:type, 'header': a:header, 'command': a:cmd . ' | head -n5' }
 endfunction
 
-" Startify lists limited to 5 items each
 let g:startify_lists = [
       \ LimitedList('files',     'find . -type f -not -path "*/\.*" | sed "s|^./||"', ['   Recent Files']),
       \ LimitedList('dir',       'find . -mindepth 1 -maxdepth 1 -type d | sed "s|^./||"', ['   Current Directory '. getcwd()]),
@@ -237,53 +177,38 @@ let g:startify_lists = [
       \ { 'type': 'bookmarks', 'header': ['   Bookmarks']           },
       \ ]
 
-" Minimal left padding
 let g:startify_padding_left = 3
 
-" Bookmarks (limited to 5)
 let g:startify_bookmarks = [
       \ { 'c': '~/.config/nvim/init.vim' },
       \ { 'p': '~/Projects' },
       \ ]
 
-" Automatically update sessions
 let g:startify_session_persistence = 1
-
-" Change to VCS root directory
 let g:startify_change_to_vcs_root = 1
-
-" Custom footer
 let g:startify_custom_footer = CenterAsciiArt(['We Work in the Dark to Serve the Light.'])
-
-" Use custom indices for a cleaner look
 let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
 
-" Adjust the entry format for better alignment
 function! StartifyEntryFormat()
     return 'StartifyEntryPadding() . substitute(entry_path, "\\s*$", "", "")'
 endfunction
 
-" Function to add minimal padding to entries
 function! StartifyEntryPadding()
     return repeat(' ', g:startify_padding_left)
 endfunction
 
-" Highlight settings
 highlight StartifyHeader  ctermfg=114 guifg=#87d787
 highlight StartifyPath    ctermfg=245 guifg=#8a8a8a
 highlight StartifyFile    ctermfg=255 guifg=#eeeeee
 highlight StartifySlash   ctermfg=240 guifg=#585858
 
-" Enable custom colors for the Assassin's Creed logo
 autocmd VimEnter * call matchadd('StartifyHeader', '\%1l\_.*\%29l')
 
-" Adjust header format to align with list items
 let g:startify_custom_header_quotes = [
       \ map(['Recent Files', 'Current Directory '.getcwd(), 'Sessions', 'Bookmarks'],
       \ '"   ".v:val')
       \ ]
 
-" Limit the number of files shown in each list
 let g:startify_files_number = 5
 let g:startify_session_number = 5
 
@@ -323,17 +248,33 @@ nmap <silent> <leader>g :TestVisit<CR>
 " NERDTree
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
+let NERDTreeShowHidden=1      " Show hidden files in NERDTree
 
 " Lazygit
 nnoremap <silent> <leader>gg :LazyGit<CR>
-let g:lazygit_floating_window_winblend = 0 " transparency of floating window
-let g:lazygit_floating_window_scaling_factor = 0.9 " scaling factor for floating window
-let g:lazygit_floating_window_border_chars= ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
-let g:lazygit_use_neovim_remote = 1 " fallback to 0 if neovim-remote is not installed
+let g:lazygit_floating_window_winblend = 0
+let g:lazygit_floating_window_scaling_factor = 0.9
+let g:lazygit_floating_window_border_chars= ['╭', '╮', '╰', '╯']
+let g:lazygit_use_neovim_remote = 1
 
 " FZF
 nnoremap <C-p> :Files<CR>
 nnoremap <leader>b :Buffers<CR>
+
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+" Goyo and Limelight integration
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+" ALE
+let g:ale_fixers = {
+  \ 'elixir': ['mix_format'],
+  \ 'python': ['black']
+  \ }
+let g:ale_fix_on_save = 1
 
 " -- Theme Configuration --
 set background=dark
@@ -341,14 +282,11 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-" Enable the One Dark colorscheme
 syntax on
 colorscheme onedark
 
-" Italic comments
 highlight Comment cterm=italic
 
-" Airline theme
 let g:airline_theme='onedark'
 
 " -- Language-specific settings --
@@ -493,3 +431,27 @@ nnoremap <leader>pr :!python %<CR>
 " Lisp
 nnoremap <leader>le :Eval<CR>
 nnoremap <leader>lc :Call<CR>
+
+" -- Custom Functions --
+" Toggle between number and relativenumber
+function! ToggleNumber()
+    if(&relativenumber == 1)
+        set norelativenumber
+        set number
+    else
+        set relativenumber
+    endif
+endfunc
+
+nnoremap <leader>r :call ToggleNumber()<CR>
+
+" -- Auto Commands --
+" Automatically source the Vimrc file on save.
+augroup autosourcing
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source %
+augroup END
+
+" -- Final Setup --
+filetype plugin indent on    " Required
+syntax on                    " Enable syntax highlighting
