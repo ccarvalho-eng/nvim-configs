@@ -113,10 +113,10 @@ nnoremap <leader>q :q<CR>     " Quick quit
 nnoremap <silent> <Esc> :noh<CR><Esc>
 
 " Window navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap <leader>wh <C-w>h
+nnoremap <leader>wj <C-w>j
+nnoremap <leader>wk <C-w>k
+nnoremap <leader>wl <C-w>l
 
 " Toggle NERDTree
 nnoremap <leader>n :NERDTreeToggle<CR>
