@@ -118,6 +118,10 @@ nnoremap <leader>wj <C-w>j
 nnoremap <leader>wk <C-w>k
 nnoremap <leader>wl <C-w>l
 
+" Split windows
+nnoremap <leader>wv :vsplit<CR>
+nnoremap <leader>ws :split<CR>
+
 " Toggle NERDTree
 nnoremap <leader>n :NERDTreeToggle<CR>
 " Toggle Undotree
