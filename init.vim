@@ -244,7 +244,7 @@ nmap <silent> <leader>g :TestVisit<CR>
 
 " NERDTree
 nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap <leader>F :NERDTreeFind<CR>
 let NERDTreeShowHidden=1      " Show hidden files in NERDTree
 
 " Lazygit
@@ -255,7 +255,7 @@ let g:lazygit_floating_window_border_chars= ['╭', '╮', '╰', '╯']
 let g:lazygit_use_neovim_remote = 1
 
 " FZF
-nnoremap <C-p> :Files<CR>
+nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 
 " Airline
