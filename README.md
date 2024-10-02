@@ -1,16 +1,14 @@
-# Neovim Configs
+# Neovim Configuration
 
 ## Table of Contents
-1. [Introduction](#introduction)
-2. [Installation](#installation)
-3. [General Settings](#general-settings)
-4. [Key Mappings](#key-mappings)
-5. [Plugins](#plugins)
-6. [Theme Configuration](#theme-configuration)
-7. [Language-specific Settings](#language-specific-settings)
-8. [Custom Functions](#custom-functions)
-9. [Additional Features](#additional-features)
-10. [Troubleshooting](#troubleshooting)
+1. [Installation](#installation)
+2. [General Settings](#general-settings)
+3. [Key Mappings](#key-mappings)
+4. [Plugins](#plugins)
+5. [Theme Configuration](#theme-configuration)
+6. [Language-specific Settings](#language-specific-settings)
+7. [Custom Functions](#custom-functions)
+8. [Additional Features](#additional-features)
 
 ## Installation
 
@@ -63,36 +61,33 @@ The configuration includes several custom key mappings to improve workflow:
 - `<leader>q`: Quick quit
 - `<C-h/j/k/l>`: Navigate between windows (replaces the need for `<C-w>` prefix)
 - `<leader>cp`: Copy the current file path to clipboard
+- `<leader>r`: Toggle between number and relativenumber
+- `<Esc>`: Clear search highlighting
 
 These mappings are designed to speed up common operations and reduce the need for mode switching.
 
 ## Plugins
 
-The configuration uses several plugins to enhance functionality. Here's a detailed breakdown of each plugin and how to use it:
+The configuration uses several plugins to enhance functionality. Here's a detailed breakdown of key plugins:
 
 ### Startify
 - Provides a custom start screen with recently edited files, sessions, and bookmarks
 - Customized with an Assassin's Creed theme
 - Access by running `:Startify` or automatically when opening Neovim without a file
-- Navigate using j/k and press Enter to open a file or session
 
 ### NERDTree
 - File explorer for easy navigation of project structure
 - Toggle NERDTree: `<leader>n`
 - Find current file in NERDTree: `<leader>f`
-- Use j/k to navigate, o to open/close directories, s to open file in a split
 
 ### FZF (Fuzzy Finder)
 - Rapidly search for files, buffers, and more
 - Find files: `<C-p>`
 - List buffers: `<leader>b`
-- Use Ctrl-j/k to navigate results, Enter to open, Ctrl-t/v/x to open in tab/vertical split/horizontal split
 
 ### ALE (Asynchronous Lint Engine)
 - Provides linting and formatting for various languages
-- Fix issues: `:ALEFix`
-- Check for issues: `:ALELint`
-- Navigate between errors: `]d` (next error), `[d` (previous error)
+- Configured to fix issues on save for supported languages
 
 ### CoC (Conquer of Completion)
 - Provides autocompletion, code navigation, and language server features
@@ -100,7 +95,6 @@ The configuration uses several plugins to enhance functionality. Here's a detail
 - Find references: `gr`
 - Show documentation: `K`
 - List outline: `<leader>co`
-- Use Tab to navigate completion menu, Enter to confirm
 
 ### vim-test
 - Run tests directly from Neovim
@@ -113,19 +107,17 @@ The configuration uses several plugins to enhance functionality. Here's a detail
 ### LazyGit
 - Integrated Git interface
 - Open LazyGit: `<leader>gg`
-- Navigate using vim motions, ? for help
 
 ### vim-gitgutter
 - Shows git diff in the sign column
 - Navigate changes: `]c` (next change), `[c` (previous change)
-- Preview hunk: `<leader>hp`
-- Stage hunk: `<leader>hs`
-- Undo hunk: `<leader>hu`
 
 ### vim-commentary
 - Easily comment/uncomment code
 - Toggle comment: `gcc`
 - Comment visual selection: `gc`
+
+For a complete list of installed plugins and their descriptions, please refer to the [Plugin List](#plugin-list) section.
 
 ## Theme Configuration
 
@@ -155,6 +147,7 @@ The configuration includes optimized settings for several programming languages:
   - `<leader>ms`: Switch between test and implementation files
   - `<leader>mf`: Format current file
   - `<leader>mi`: Start IEx console
+- Debug function shortcut: `<leader>d`
 
 ### Erlang
 - Error highlighting enabled (`let g:erlang_show_errors = 1`)
@@ -194,3 +187,62 @@ The configuration includes several custom functions to enhance workflow:
 - `SwitchTestImplementation()`: Switches between test and implementation files for Elixir
   - If in a test file, switches to the corresponding implementation file
   - If in an implementation file, switches to the corresponding test file
+- `ToggleNumber()`: Toggles between `number` and `relativenumber` settings
+
+## Additional Features
+
+- Automatic sourcing of Vimrc file on save
+- Highlight trailing whitespace
+- Language Server Protocol (LSP) configuration for various languages
+- GitHub Copilot integration for AI-assisted coding
+- Custom status line with Airline
+- Goyo and Limelight for distraction-free writing
+- Undotree for visualizing and navigating undo history
+- Multiple cursor support for simultaneous editing
+- EasyMotion for improved navigation within files
+- VimWiki for personal note-taking and organization
+
+## Plugin List
+
+This configuration includes a wide array of plugins to enhance various aspects of the Neovim experience. Here's a complete list of installed plugins with links to their GitHub repositories:
+
+1. [mhinz/vim-startify](https://github.com/mhinz/vim-startify)
+2. [github/copilot.vim](https://github.com/github/copilot.vim)
+3. [elixir-editors/vim-elixir](https://github.com/elixir-editors/vim-elixir)
+4. [dense-analysis/ale](https://github.com/dense-analysis/ale)
+5. [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
+6. [amiralies/coc-elixir](https://github.com/amiralies/coc-elixir)
+7. [vim-test/vim-test](https://github.com/vim-test/vim-test)
+8. [kassio/neoterm](https://github.com/kassio/neoterm)
+9. [preservim/nerdtree](https://github.com/preservim/nerdtree)
+10. [junegunn/fzf](https://github.com/junegunn/fzf)
+11. [junegunn/fzf.vim](https://github.com/junegunn/fzf.vim)
+12. [kdheepak/lazygit.nvim](https://github.com/kdheepak/lazygit.nvim)
+13. [junegunn/gv.vim](https://github.com/junegunn/gv.vim)
+14. [tpope/vim-rhubarb](https://github.com/tpope/vim-rhubarb)
+15. [airblade/vim-gitgutter](https://github.com/airblade/vim-gitgutter)
+16. [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline)
+17. [vim-airline/vim-airline-themes](https://github.com/vim-airline/vim-airline-themes)
+18. [tpope/vim-commentary](https://github.com/tpope/vim-commentary)
+19. [vim-erlang/vim-erlang-runtime](https://github.com/vim-erlang/vim-erlang-runtime)
+20. [vim-erlang/vim-erlang-compiler](https://github.com/vim-erlang/vim-erlang-compiler)
+21. [vim-erlang/vim-erlang-omnicomplete](https://github.com/vim-erlang/vim-erlang-omnicomplete)
+22. [rust-lang/rust.vim](https://github.com/rust-lang/rust.vim)
+23. [gleam-lang/gleam.vim](https://github.com/gleam-lang/gleam.vim)
+24. [vim-python/python-syntax](https://github.com/vim-python/python-syntax)
+25. [Vimjas/vim-python-pep8-indent](https://github.com/Vimjas/vim-python-pep8-indent)
+26. [kovisoft/slimv](https://github.com/kovisoft/slimv)
+27. [prabirshrestha/vim-lsp](https://github.com/prabirshrestha/vim-lsp)
+28. [mattn/vim-lsp-settings](https://github.com/mattn/vim-lsp-settings)
+29. [joshdick/onedark.vim](https://github.com/joshdick/onedark.vim)
+30. [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
+31. [tpope/vim-surround](https://github.com/tpope/vim-surround)
+32. [tpope/vim-repeat](https://github.com/tpope/vim-repeat)
+33. [jiangmiao/auto-pairs](https://github.com/jiangmiao/auto-pairs)
+34. [alvan/vim-closetag](https://github.com/alvan/vim-closetag)
+35. [easymotion/vim-easymotion](https://github.com/easymotion/vim-easymotion)
+36. [terryma/vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors)
+37. [mbbill/undotree](https://github.com/mbbill/undotree)
+38. [vimwiki/vimwiki](https://github.com/vimwiki/vimwiki)
+39. [junegunn/goyo.vim](https://github.com/junegunn/goyo.vim)
+40. [junegunn/limelight.vim](https://github.com/junegunn/limelight.vim)
