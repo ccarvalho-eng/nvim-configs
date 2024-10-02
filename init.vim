@@ -85,6 +85,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'rust-lang/rust.vim'                " Rust file detection, syntax highlighting, formatting, etc.
   Plug 'gleam-lang/gleam.vim'              " Gleam language support
   Plug 'vim-python/python-syntax'          " Python syntax highlighting
+  Plug 'hashivim/vim-terraform'            " Terraform syntax highlighting and indentation
   Plug 'Vimjas/vim-python-pep8-indent'     " PEP8 indentation for Python
   Plug 'kovisoft/slimv'                    " Superior Lisp Interaction Mode for Vim
   Plug 'prabirshrestha/vim-lsp'            " Async Language Server Protocol plugin for vim and neovim

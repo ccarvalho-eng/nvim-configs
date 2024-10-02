@@ -249,3 +249,4 @@ This configuration includes a wide array of plugins to enhance various aspects o
 39. [vimwiki/vimwiki](https://github.com/vimwiki/vimwiki)
 40. [junegunn/goyo.vim](https://github.com/junegunn/goyo.vim)
 41. [junegunn/limelight.vim](https://github.com/junegunn/limelight.vim)
+42. [hashivim/vim-terraform](https://github.com/hashivim/vim-terraform)
