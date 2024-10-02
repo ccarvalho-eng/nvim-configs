@@ -60,51 +60,47 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-  " Existing plugins
-  Plug 'mhinz/vim-startify'
-  Plug 'github/copilot.vim'
-  Plug 'elixir-editors/vim-elixir'
-  Plug 'mhinz/vim-mix-format'
-  Plug 'dense-analysis/ale'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'amiralies/coc-elixir', {'do': 'yarn install && yarn prepack'}
-  Plug 'vim-test/vim-test'
-  Plug 'kassio/neoterm'
-  Plug 'preservim/nerdtree'
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
-  Plug 'kdheepak/lazygit.nvim'
-  Plug 'junegunn/gv.vim'
-  Plug 'tpope/vim-rhubarb'
-  Plug 'airblade/vim-gitgutter'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'tpope/vim-commentary'
-  Plug 'vim-erlang/vim-erlang-runtime'
-  Plug 'vim-erlang/vim-erlang-compiler'
-  Plug 'vim-erlang/vim-erlang-omnicomplete'
-  Plug 'rust-lang/rust.vim'
-  Plug 'gleam-lang/gleam.vim'
-  Plug 'vim-python/python-syntax'
-  Plug 'Vimjas/vim-python-pep8-indent'
-  Plug 'kovisoft/slimv'
-  Plug 'prabirshrestha/vim-lsp'
-  Plug 'mattn/vim-lsp-settings'
-  Plug 'joshdick/onedark.vim'
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'ryanoasis/vim-devicons'
-  
-  " Additional useful plugins
-  Plug 'tpope/vim-surround'               " Easily delete, change and add surroundings in pairs
-  Plug 'tpope/vim-repeat'                 " Enable repeating supported plugin maps with '.'
-  Plug 'jiangmiao/auto-pairs'             " Insert or delete brackets, parens, quotes in pair
-  Plug 'alvan/vim-closetag'               " Auto close HTML tags
-  Plug 'easymotion/vim-easymotion'        " Vim motions on speed
-  Plug 'terryma/vim-multiple-cursors'     " Multiple selections for Vim
-  Plug 'mbbill/undotree'                  " Visualize undo history
-  Plug 'vimwiki/vimwiki'                  " Personal Wiki for Vim
-  Plug 'junegunn/goyo.vim'                " Distraction-free writing in Vim
-  Plug 'junegunn/limelight.vim'           " Hyperfocus-writing in Vim
+  Plug 'mhinz/vim-startify'                " Start screen for Vim
+  Plug 'github/copilot.vim'                " GitHub Copilot AI code completion
+  Plug 'elixir-editors/vim-elixir'         " Elixir support for Vim
+  Plug 'dense-analysis/ale'                " Asynchronous Lint Engine
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}  " Intellisense engine for Vim8 & Neovim
+  Plug 'amiralies/coc-elixir', {'do': 'yarn install && yarn prepack'}  " Elixir language server
+  Plug 'vim-test/vim-test'                 " A Vim wrapper for running tests
+  Plug 'kassio/neoterm'                    " Wrapper of some vim/neovim's :terminal functions
+  Plug 'preservim/nerdtree'                " File system explorer for Vim
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  " Fuzzy finder
+  Plug 'junegunn/fzf.vim'                  " Fuzzy finder Vim integration
+  Plug 'kdheepak/lazygit.nvim'             " Git commands and UI using lazygit
+  Plug 'junegunn/gv.vim'                   " Git commit browser
+  Plug 'tpope/vim-rhubarb'                 " GitHub extension for fugitive.vim
+  Plug 'airblade/vim-gitgutter'            " Shows git diff markers in the sign column
+  Plug 'vim-airline/vim-airline'           " Lean & mean status/tabline for Vim
+  Plug 'vim-airline/vim-airline-themes'    " Themes for vim-airline
+  Plug 'tpope/vim-commentary'              " Comment stuff out
+  Plug 'vim-erlang/vim-erlang-runtime'     " Erlang indentation and syntax for Vim
+  Plug 'vim-erlang/vim-erlang-compiler'    " Erlang compiler plugin
+  Plug 'vim-erlang/vim-erlang-omnicomplete' " Omni completion for Erlang
+  Plug 'rust-lang/rust.vim'                " Rust file detection, syntax highlighting, formatting, etc.
+  Plug 'gleam-lang/gleam.vim'              " Gleam language support
+  Plug 'vim-python/python-syntax'          " Python syntax highlighting
+  Plug 'Vimjas/vim-python-pep8-indent'     " PEP8 indentation for Python
+  Plug 'kovisoft/slimv'                    " Superior Lisp Interaction Mode for Vim
+  Plug 'prabirshrestha/vim-lsp'            " Async Language Server Protocol plugin for vim and neovim
+  Plug 'mattn/vim-lsp-settings'            " Auto configurations for Language Server for vim-lsp
+  Plug 'joshdick/onedark.vim'              " A dark Vim/Neovim color scheme
+  Plug 'vim-airline/vim-airline-themes'    " Themes for vim-airline (duplicate, consider removing)
+  Plug 'ryanoasis/vim-devicons'            " Adds file type icons to Vim plugins
+  Plug 'tpope/vim-surround'                " Easily delete, change and add surroundings in pairs
+  Plug 'tpope/vim-repeat'                  " Enable repeating supported plugin maps with '.'
+  Plug 'jiangmiao/auto-pairs'              " Insert or delete brackets, parens, quotes in pair
+  Plug 'alvan/vim-closetag'                " Auto close HTML tags
+  Plug 'easymotion/vim-easymotion'         " Vim motions on speed
+  Plug 'terryma/vim-multiple-cursors'      " Multiple selections for Vim
+  Plug 'mbbill/undotree'                   " Visualize undo history
+  Plug 'vimwiki/vimwiki'                   " Personal Wiki for Vim
+  Plug 'junegunn/goyo.vim'                 " Distraction-free writing in Vim
+  Plug 'junegunn/limelight.vim'            " Hyperfocus-writing in Vim
 call plug#end()
 
 " -- Leader Shortcuts --
