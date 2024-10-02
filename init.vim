@@ -73,6 +73,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf.vim'                  " Fuzzy finder Vim integration
   Plug 'kdheepak/lazygit.nvim'             " Git commands and UI using lazygit
   Plug 'junegunn/gv.vim'                   " Git commit browser
+  Plug 'tpope/vim-fugitive'                " Git wrapper for Vim
   Plug 'tpope/vim-rhubarb'                 " GitHub extension for fugitive.vim
   Plug 'airblade/vim-gitgutter'            " Shows git diff markers in the sign column
   Plug 'vim-airline/vim-airline'           " Lean & mean status/tabline for Vim
