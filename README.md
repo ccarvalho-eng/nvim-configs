@@ -1,5 +1,7 @@
 # Neovim Configuration
 
+<img width="1237" alt="Screenshot 2024-10-02 at 1 26 43 AM" src="https://github.com/user-attachments/assets/6254373f-7121-43f6-823d-75bda73cace1">
+
 ## Table of Contents
 1. [Installation](#installation)
 2. [General Settings](#general-settings)
